@@ -5,7 +5,7 @@
 *
 */
 
-Creep.prototype.harvest = function() {
+Creep.prototype.harvesting = function() {
   let creep = this; // Reference self as a creep instance of Creep
   //var _this = this;
   let stored_sources = creep.room.find(FIND_STRUCTURES, {filter: (s) => {
@@ -32,7 +32,7 @@ Creep.prototype.harvest = function() {
 *
 */
 
-Creep.prototype.upgrade = function() {
+Creep.prototype.upgrading = function() {
   let creep = this;
 }
 
@@ -41,10 +41,10 @@ Creep.prototype.upgrade = function() {
 *
 */
 
-Creep.prototype.battle = function (){
+Creep.prototype.battling = function (){
   let creep = this;
 }
 
-Creep.prototype.transport = function(target) {
-  
+Creep.prototype.transport = function(resource, target) {
+  let creep = this;
 }
