@@ -5,6 +5,7 @@
 *
 */
 
+
 Creep.prototype.harvesting = function() {
   let creep = this; // Reference self as a creep instance of Creep
   //var _this = this;

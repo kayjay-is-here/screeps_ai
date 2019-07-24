@@ -2,6 +2,8 @@ try {
    const _ = require('lodash');
    const jobHandler = require('jobHandler');
    const spawnHandler = require('spawnHandler');
+   
+
    global.setLogLevel = function(level) {
      /** @TODO FINISH FUNCTION*/
    }
