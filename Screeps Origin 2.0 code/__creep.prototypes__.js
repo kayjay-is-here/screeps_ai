@@ -1,5 +1,14 @@
+const _ = require('lodash');
+const errHandler = require('errHandler');
+/**
+*
+* @extends RoomPosition
+* @extends Creep
+**/
+
 /**
 * Creep harvesting subroutine.
+*
 *
 * @type {function}
 *
@@ -34,7 +43,14 @@ Creep.prototype.harvesting = function() {
 */
 
 Creep.prototype.upgrading = function() {
-  let creep = this;
+  errHandler.throwErr("__upgrading__" , function() {
+    let creep = this;
+    let roomController = creep.room.find(FIND_MY_STRUCTURES, {filter: (s) => {s.structureType === STRUCTURE_CONTROLLER}});
+    if(roomController.length > 1 || !roomController.length) {
+      throw "ERR_NOT_IN_RANGE";
+    }
+    creep.pos.isNearTo(roomController) ? creep.upgradeController(roomController) : creep.moveTo(roomController);
+  });
 }
 
 /**
@@ -44,8 +60,32 @@ Creep.prototype.upgrading = function() {
 
 Creep.prototype.battling = function (){
   let creep = this;
+  let health = creep.hits;
+  let maxHealth = creep.hitsMax;
+
+
 }
 
 Creep.prototype.transport = function(resource, target) {
   let creep = this;
+}
+
+Creep.prototype.checkEnergy = function() {
+  let creep = this;
+  if (typeof creep.memory.harvesting == "undefined") {
+    creep.memory.harvesting = true;
+  }
+  if (creep.carry[RESOURCE_ENERGY] == 0 && !creep.memory.harvesting) {
+    creep.memory.harvesting = true;
+  }
+  if (creep.carry[RESOURCE_ENERGY] == creep.carryCapacity) {
+    creep.memory.harvesting = false;
+  }
+
+  if(creep.memory.harvesting) {
+    creep.harvesting();
+    return "harvest";
+  } else {
+    return "ok";
+  }
 }
