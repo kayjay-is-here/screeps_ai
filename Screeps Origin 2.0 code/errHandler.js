@@ -9,7 +9,7 @@ module.exports = {
   *
   * @return {void}
   */
-  throwErr: (routine, task) => {
+  attempt: (routine, task) => {
     try {
       task();
     } catch (err) {

@@ -8,7 +8,7 @@ module.exports = {
     role: "harvest",
     parts: [WORK, MOVE, CARRY],
     run: function(creep) {
-      errHandler("harvester" , function() {
+      errHandler.attempt("harvester" , function() {
         if(creep.checkEnergy() === "ok") {
           creep.transport(RESOURCE_ENERGY, STRUCTURE_SPAWN);
         }
@@ -21,7 +21,7 @@ module.exports = {
     role: "upgrade",
     parts: [WORK, MOVE, CARRY],
     run: function(creep) {
-      errHandler("upgrader", function () {
+      errHandler.attempt("upgrader", function () {
         if(creep.checkEnergy() == "ok") {
           creep.upgrading();
         }
