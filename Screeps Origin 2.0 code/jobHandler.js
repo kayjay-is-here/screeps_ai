@@ -6,6 +6,7 @@ module.exports = {
   harvester: {
     name: "Harvester",
     role: "harvest",
+    parts: [WORK, MOVE, CARRY],
     run: function(creep) {
       errHandler("harvester" , function() {
         if(creep.checkEnergy() === "ok") {
@@ -18,6 +19,7 @@ module.exports = {
   upgrader: {
     name: "Upgrader",
     role: "upgrade",
+    parts: [WORK, MOVE, CARRY],
     run: function(creep) {
       errHandler("upgrader", function () {
         if(creep.checkEnergy() == "ok") {
